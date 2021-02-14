@@ -1,8 +1,11 @@
 package com.ksolutions.shopper
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.WindowManager
+import androidx.core.os.HandlerCompat.postDelayed
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
@@ -14,5 +17,10 @@ class SplashActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
+
+        Handler().postDelayed({
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        },2500)
     }
 }
