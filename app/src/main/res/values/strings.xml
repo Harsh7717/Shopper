@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Shopper</string>
+
+    <string name="image_contentDescription">image</string>
+    <string name="let_s_get_started_text">Welcome</string>
+    <string name="intro_text_description">Now find your all Necessary Itmes just in your Mobile, No need to search here and there.</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="sign_up">SIGN UP</string>
+
+    <string name="sign_up_description_text">Enter your Name, Mobile, E-Mail id and Password, to register with us.</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
 </resources>

@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopper">
-        <activity android:name=".LoginActivity"></activity>
+        <activity
+            android:name=".IntroActivity">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.NoActionBar">
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
+        <activity android:name=".LoginActivity" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -20,7 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
