@@ -1,11 +1,11 @@
-package com.ksolutions.shopper
+package com.ksolutions.shopper.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
-import androidx.core.os.HandlerCompat.postDelayed
+import com.ksolutions.shopper.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
         )
 
         Handler().postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, IntroActivity::class.java))
             finish()
         },2500)
     }

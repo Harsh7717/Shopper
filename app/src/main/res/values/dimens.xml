@@ -3,7 +3,7 @@
     <dimen name="splash_screen_title_text_size">50sp</dimen>
 
     <dimen name="intro_screen_title_text_size">40sp</dimen>
-    <dimen name="intro_screen_title_text_marginTop">40dp</dimen>
+    <dimen name="intro_screen_title_text_marginTop">20dp</dimen>
     <dimen name="intro_screen_image_marginTop">30dp</dimen>
     <dimen name="lets_get_started_text_marginTop">25dp</dimen>
     <dimen name="lets_get_started_text_size">25sp</dimen>
@@ -19,14 +19,35 @@
 
     <dimen name="sign_up_screen_btn_marginTop">30dp</dimen>
     <dimen name="toolbar_title_text_size">18sp</dimen>
-    <dimen name="authentication_screen_content_marginTop">40dp</dimen>
+    <dimen name="authentication_screen_content_marginTop">5dp</dimen>
     <dimen name="authentication_description_text_size">16sp</dimen>
     <dimen name="authentication_screen_marginStartEnd">25dp</dimen>
-    <dimen name="authentication_screen_card_view_marginTop">60dp</dimen>
+    <dimen name="authentication_screen_card_view_marginTop">30dp</dimen>
     <dimen name="card_view_elevation">10dp</dimen>
     <dimen name="card_view_corner_radius">10dp</dimen>
     <dimen name="card_view_layout_content_padding">16dp</dimen>
     <dimen name="authentication_screen_til_marginStartEnd">16dp</dimen>
     <dimen name="et_text_size">16sp</dimen>
     <dimen name="authentication_screen_til_marginTop">20dp</dimen>
+
+    <dimen name="app_name_margin_top">1dp</dimen>
+    <dimen name="app_name_margin_bottom">10dp</dimen>
+    <dimen name="input_screen_desc_margin_top">20dp</dimen>
+    <dimen name="mobile_input_margin_top">17dp</dimen>
+    <dimen name="country_code_margin_start">25dp</dimen>
+    <dimen name="country_code_text_size">16sp</dimen>
+    <dimen name="mobile_input_screen_image_marginTop">5dp</dimen>
+    <dimen name="mobile_input_logo_size">170dp</dimen>
+    <dimen name="ccp_outline_radius">5dp</dimen>
+    <dimen name="mobile_input_margin_left">3dp</dimen>
+    <dimen name="mobile_input_margin_right">15dp</dimen>
+    <dimen name="mobile_input_text_size">20dp</dimen>
+    <dimen name="otp_input_margin_top">10dp</dimen>
+    <dimen name="given_mob_size">20sp</dimen>
+    <dimen name="ccp_height">61dp</dimen>
+
+    <dimen name="progress_dialog_content_padding">10dp</dimen>
+    <dimen name="progress_bar_size">50dp</dimen>
+    <dimen name="progress_text_marginStart">16dp</dimen>
+    <dimen name="progress_text_size">16sp</dimen>
 </resources>

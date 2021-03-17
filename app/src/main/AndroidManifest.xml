@@ -9,27 +9,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopper">
+        <activity android:name=".activities.BaseActivity"></activity>
         <activity
-            android:name=".IntroActivity">
+            android:name=".activities.OtpActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
         <activity
-            android:name=".SignUpActivity"
+            android:name=".activities.MobileInputActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
-        <activity android:name=".LoginActivity" />
+            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.IntroActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.NoActionBar">
+            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
+        <activity
+            android:name=".activities.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
+        <activity
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Shopper.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
