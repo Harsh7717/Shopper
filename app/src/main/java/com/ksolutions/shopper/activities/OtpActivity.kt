@@ -1,7 +1,6 @@
 package com.ksolutions.shopper.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.chaos.view.PinView
@@ -12,7 +11,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.ksolutions.shopper.R
 import kotlinx.android.synthetic.main.activity_otp.*
 
-class OtpActivity : AppCompatActivity() {
+class OtpActivity : BaseActivity() {
 
     private lateinit var userOtp : PinView
     private lateinit var auth: FirebaseAuth
@@ -39,8 +38,8 @@ class OtpActivity : AppCompatActivity() {
             }
             else
             {
+                showProgressDialog(resources.getString(R.string.please_wait))
                 val credential = PhoneAuthProvider.getCredential(OTP!!, userOtp.text.toString())
-
                 signInWithPhoneAuthCredential(credential)
             }
         }
@@ -57,7 +56,7 @@ class OtpActivity : AppCompatActivity() {
                     var phoneNo = intent.getStringExtra("phoneNo")
                     var countryCode = intent.getStringExtra("countryCode")
 
-                    var intent2 = Intent(this, SignUpActivity::class.java)
+                    var intent2 = Intent(this, RegisterActivity::class.java)
                     intent2.putExtra("phoneNo",phoneNo)
                     intent2.putExtra("countryCode",countryCode)
                     startActivity(intent2)

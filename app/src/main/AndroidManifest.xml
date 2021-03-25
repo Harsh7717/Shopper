@@ -9,27 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopper">
-        <activity android:name=".activities.BaseActivity"></activity>
+        <activity android:name=".activities.MyProfileActivity"></activity>
+        <activity
+            android:name=".activities.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
+        <activity android:name=".activities.BaseActivity" />
         <activity
             android:name=".activities.OtpActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
-        <activity
-            android:name=".activities.MobileInputActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
-        <activity
-            android:name=".activities.IntroActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
+            android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name=".activities.SignUpActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
+            android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".activities.IntroActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Shopper.NoActionBar"></activity>
+            android:theme="@style/Theme.Shopper.NoActionBar" />
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Shopper.NoActionBar" />
+        <activity
+            android:name=".activities.SignInActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"

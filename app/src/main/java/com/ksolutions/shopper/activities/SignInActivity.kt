@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.TextUtils
-import android.view.View
+import android.view.View.VISIBLE
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
@@ -14,34 +14,41 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
-import com.hbb20.CountryCodePicker
+import com.google.firebase.database.*
 import com.ksolutions.shopper.R
-import kotlinx.android.synthetic.main.activity_sign_up.*
+import com.ksolutions.shopper.model.User
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import java.util.concurrent.TimeUnit
 
-class SignUpActivity : BaseActivity() {
+
+class SignInActivity : BaseActivity() {
 
     private lateinit var phoneVal : String
-    public lateinit var phone: EditText
+    private lateinit var phone: EditText
     private lateinit var OTP : String
+    public var isExist : Boolean = true
 
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //This call the parent constructor
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        // This is used to align the xml view to this class
+        setContentView(R.layout.activity_sign_in)
+
+        // This is used to hide the status bar and make the splash screen as a full screen activity.
         window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setupActionBar()
 
         setupActionBar()
 
         auth = FirebaseAuth.getInstance()
 
-        phone = findViewById(R.id.et_mobile_sign_up)
+        phone = findViewById(R.id.et_mobile_sign_in)
+
+        var intent = Intent(this, MainActivity::class.java)
 
         var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks()
         {
@@ -49,10 +56,10 @@ class SignUpActivity : BaseActivity() {
             {
                 if(verificationId != null)
                 {
-                    et_mobile_sign_up.isEnabled=false
-                    sign_up_desc_text.visibility = View.VISIBLE
-                    sign_up_otp.visibility = View.VISIBLE
-                    btn_sign_up.visibility = View.VISIBLE
+                    false.also { et_mobile_sign_in.isEnabled = it }
+                    sign_in_desc_text.visibility = VISIBLE
+                    sign_in_otp.visibility = VISIBLE
+                    btn_sign_in.visibility = VISIBLE
                     OTP = verificationId
                     hideProgressDialog()
                 }
@@ -84,7 +91,7 @@ class SignUpActivity : BaseActivity() {
             }
         }
 
-        btn_get_otp_sign_up.setOnClickListener {
+        btn_get_otp.setOnClickListener {
             phoneVal = phone.text.toString().trim{ it<=' ' }
 
             if(validate(phone.text.toString()))
@@ -94,16 +101,16 @@ class SignUpActivity : BaseActivity() {
             }
         }
 
-        btn_sign_up.setOnClickListener(){
-            if(sign_up_otp.text.toString().isEmpty())
+        btn_sign_in.setOnClickListener(){
+            if(sign_in_otp.text.toString().isEmpty())
             {
                 showErrorSnackBar("Please enter the OTP.")
-                sign_up_otp.requestFocus()
+                sign_in_otp.requestFocus()
             }
             else
             {
                 showProgressDialog(resources.getString(R.string.please_wait))
-                val credential = PhoneAuthProvider.getCredential(OTP!!, sign_up_otp.text.toString())
+                val credential = PhoneAuthProvider.getCredential(OTP!!, sign_in_otp.text.toString())
                 signInWithPhoneAuthCredential(credential)
             }
         }
@@ -130,24 +137,20 @@ class SignUpActivity : BaseActivity() {
                     {
                         // Sign in success, update UI with the signed-in user's information
                         //Toast.makeText(applicationContext, "OTP Verified Successfully", Toast.LENGTH_LONG).show()
-
                         if (task.result!!.additionalUserInfo.isNewUser)
                         {
-                            var intent = Intent(this, RegisterActivity::class.java)
-
-                            intent.putExtra("phoneNo",et_mobile_sign_up.text.toString())
-                            startActivity(intent)
-                            finish()
+                            hideProgressDialog()
+                            showErrorSnackBar("Mobile Number isn't Registered Please Sign UP first.")
+                            Handler().postDelayed({
+                                deleteUser()
+                            },1500)
+                            hideProgressDialog()
                         }
                         else
                         {
-                            //startActivity(Intent(this, SignInActivity::class.java))
-                            hideProgressDialog()
-                            showErrorSnackBar("Mobile Number Already Registered Please Sign In.")
-                            Handler().postDelayed({
-                                startActivity(Intent(this, SignInActivity::class.java))
-                                finish()
-                            },1500)
+                            //Toast.makeText(applicationContext, "Mobile Number Registered", Toast.LENGTH_LONG).show()
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
                         }
 
                         val user = task.result?.user
@@ -164,15 +167,43 @@ class SignUpActivity : BaseActivity() {
                 }
     }
 
-    private fun setupActionBar()
+    fun deleteUser()
     {
-        setSupportActionBar(toolbar_sign_up_activity)
+        //Toast.makeText(applicationContext, "Deleting the User", Toast.LENGTH_LONG).show()
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+        currentUser.delete().addOnCompleteListener { task ->
+            if (task.isSuccessful)
+            {
+                //Toast.makeText(applicationContext, "Mobile Number Deleted Successfully", Toast.LENGTH_LONG).show()
+                startActivity(Intent(this, SignUpActivity::class.java))
+                finish()
+            }
+            else
+            {
+                Toast.makeText(applicationContext, "Faced Any Error", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    fun signInSuccess(user: User) {
+
+        hideProgressDialog()
+
+        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+        finish()
+    }
+
+    private fun setupActionBar() {
+
+        setSupportActionBar(toolbar_sign_in_activity)
+
         val actionBar = supportActionBar
-        if (actionBar != null)
-        {
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24dp)
         }
-        toolbar_sign_up_activity.setNavigationOnClickListener { onBackPressed() }
+
+        toolbar_sign_in_activity.setNavigationOnClickListener { onBackPressed() }
     }
 }

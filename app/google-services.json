@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "439331176949",
-    "project_id": "shopper-82270",
-    "storage_bucket": "shopper-82270.appspot.com"
+    "project_number": "519600246577",
+    "project_id": "shopper-5556a",
+    "storage_bucket": "shopper-5556a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:439331176949:android:979f5852731b500009a0bc",
+        "mobilesdk_app_id": "1:519600246577:android:d7e206db87aab99b096a10",
         "android_client_info": {
           "package_name": "com.ksolutions.shopper"
         }
       },
       "oauth_client": [
         {
-          "client_id": "439331176949-nnp0jku2i0hrp7fj6s0a913v6jac1iqb.apps.googleusercontent.com",
+          "client_id": "519600246577-3pu6qitc7f5aef562sjrkje10d1ob0e1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBqisQFyhf4ebz_twJLCmoC7hRgEhraMAs"
+          "current_key": "AIzaSyDqY9-Gk2IuSNOFz9FH1Xa4sWV8ECJmmAg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "439331176949-nnp0jku2i0hrp7fj6s0a913v6jac1iqb.apps.googleusercontent.com",
+              "client_id": "519600246577-3pu6qitc7f5aef562sjrkje10d1ob0e1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

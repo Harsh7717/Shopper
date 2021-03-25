@@ -7,20 +7,28 @@
     <string name="sign_in">SIGN IN</string>
     <string name="sign_up">SIGN UP</string>
 
-    <string name="sign_up_description_text">Enter your Name, Mobile, E-Mail id and Password, to register with us.</string>
+    <string name="register_description_text">Enter your Name, Mobile, E-Mail id and Password for register with us.</string>
     <string name="name">Name</string>
+    <string name="register">Registration</string>
     <string name="mobile">Mobile</string>
-    <string name="password">Password</string>
+    <string name="dob">DOB</string>
+    <string name="dobHint">DD/MM/YYYY</string>
     <string name="email">Email</string>
     <string name="otp">OTP</string>
 
-    <string name="mobile_input_description_text">Please Enter Your 10 Digit Mobile Number</string>
+    <string name="sign_in_description_text">Please Enter Your Registered 10 Digit Mobile Number for Sign In</string>
     <string name="country_pref">IND</string>
     <string name="get_otp">GET OTP</string>
     <string name="submit">SUBMIT</string>
     <string name="otp_input_description_text">Please Enter the One Time Password sent to the mobile number</string>
-    <string name="sign_in_description_text">Please Enter Your registered Mobile Number and Password for Log in</string>
+    <string name="sign_up_description_text">Please Enter Your 10 Digit Mobile Number for the OTP verification</string>
 
     <string name="please_click_back_again_to_exit">Please click back again to exit.</string>
     <string name="please_wait">Please Wait&#8230;</string>
+
+    <string name="nav_my_profile">My Profile</string>
+    <string name="nav_sign_out">Sign Out</string>
+
+    <string name="update">UPDATE</string>
+    <string name="my_profile">My Profile</string>
 </resources>

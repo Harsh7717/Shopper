@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_background"
     android:orientation="vertical"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.SignInActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_sign_in_activity"
@@ -79,31 +79,66 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/et_mobile"
+                        android:id="@+id/et_mobile_sign_in"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/mobile"
-                        android:inputType="number"
+                        android:inputType="phone"
+                        android:text="+91"
                         android:textSize="@dimen/et_text_size" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/authentication_screen_til_marginStartEnd"
-                    android:layout_marginTop="@dimen/authentication_screen_til_marginTop"
-                    android:layout_marginEnd="@dimen/authentication_screen_til_marginStartEnd"
-                    app:passwordToggleEnabled="true"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/et_password"
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_get_otp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/password"
-                        android:inputType="textVisiblePassword"
-                        android:textSize="16sp" />
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/btn_marginStartEnd"
+                        android:layout_marginTop="@dimen/sign_up_screen_btn_marginTop"
+                        android:layout_marginEnd="@dimen/btn_marginStartEnd"
+                        android:background="@drawable/shape_button_rounded"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/btn_paddingTopBottom"
+                        android:paddingBottom="@dimen/btn_paddingTopBottom"
+                        android:text="@string/get_otp"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/btn_text_size" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/sign_in_desc_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/input_screen_desc_margin_top"
+                    android:layout_marginStart="@dimen/authentication_screen_marginStartEnd"
+                    android:layout_marginEnd="@dimen/authentication_screen_marginStartEnd"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    android:text="@string/otp_input_description_text"
+                    android:textColor="@color/secondary_text_color"
+                    android:textSize="@dimen/authentication_description_text_size" />
+
+
+                <com.chaos.view.PinView
+                    android:id="@+id/sign_in_otp"
+                    style="@style/PinWidget.PinView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/otp_input_margin_top"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    android:layout_gravity="center"
+                    android:cursorVisible="true"
+                    android:inputType="number"
+                    app:cursorColor="@color/black"
+                    app:hideLineWhenFilled="true"
+                    app:itemCount="6"
+                    app:itemHeight="40dp"
+                    app:itemRadius="5dp"
+                    app:itemWidth="40dp"
+                    app:lineColor="@color/secondary_text_color"
+                    android:textColor="@color/black">
+                </com.chaos.view.PinView>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_sign_in"
@@ -111,6 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/btn_marginStartEnd"
+                    android:visibility="invisible"
                     android:layout_marginTop="@dimen/sign_up_screen_btn_marginTop"
                     android:layout_marginEnd="@dimen/btn_marginStartEnd"
                     android:background="@drawable/shape_button_rounded"

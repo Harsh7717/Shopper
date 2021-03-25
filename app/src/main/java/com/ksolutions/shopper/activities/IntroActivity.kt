@@ -1,7 +1,6 @@
 package com.ksolutions.shopper.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.ksolutions.shopper.R
@@ -18,11 +17,11 @@ class IntroActivity : BaseActivity() {
         )
 
         btn_sign_up_intro.setOnClickListener(){
-            startActivity(Intent(this, MobileInputActivity::class.java))
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
 
         btn_sign_in_intro.setOnClickListener(){
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, SignInActivity::class.java))
         }
     }
 }

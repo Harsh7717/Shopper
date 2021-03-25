@@ -7,14 +7,17 @@
     android:orientation="horizontal"
     android:padding="@dimen/progress_dialog_content_padding">
 
-    <ProgressBar
+    <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/progressBar"
         android:layout_width="@dimen/progress_bar_size"
         android:layout_height="@dimen/progress_bar_size"
+        style="@style/SpinKitView.Circle"
+        app:SpinKit_Color="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_progress_text"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+    </com.github.ybq.android.spinkit.SpinKitView>
 
     <TextView
         android:id="@+id/tv_progress_text"
