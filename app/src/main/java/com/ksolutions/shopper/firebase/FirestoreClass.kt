@@ -3,13 +3,11 @@ package com.ksolutions.shopper.firebase
 import android.app.Activity
 import android.provider.SyncStateContract
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.ksolutions.shopper.activities.MainActivity
-import com.ksolutions.shopper.activities.RegisterActivity
-import com.ksolutions.shopper.activities.SignInActivity
-import com.ksolutions.shopper.activities.SignUpActivity
+import com.ksolutions.shopper.activities.*
 import com.ksolutions.shopper.model.User
 import com.ksolutions.shopper.utils.Constants
 import com.ksolutions.shopper.utils.Constants.USERS
@@ -39,7 +37,7 @@ class FirestoreClass {
                 )
             }
     }
-    fun signInUser(activity: Activity)
+    fun loadUserData(activity: Activity)
     {
 
         // Here we pass the collection name from which we wants the data.
@@ -65,6 +63,9 @@ class FirestoreClass {
                             is MainActivity -> {
                                 activity.updateNavigationUserDetails(loggedInUser)
                             }
+                            is MyProfileActivity -> {
+                                activity.setUserDataInUI(loggedInUser)
+                            }
                         }
                     }
                 }
@@ -84,6 +85,33 @@ class FirestoreClass {
                     e
                 )
             }
+    }
+
+    /**
+     * A function to update the user profile data into the database.
+     */
+    fun updateUserProfileData(activity: MyProfileActivity, userHashMap: HashMap<String, Any>)
+    {
+        mFireStore.collection(Constants.USERS) // Collection Name
+                .document(getCurrentUserID()) // Document ID
+                .update(userHashMap) // A hashmap of fields which are to be updated.
+                .addOnSuccessListener {
+                    // Profile data is updated successfully.
+                    Log.e(activity.javaClass.simpleName, "Profile Data updated successfully!")
+
+                    Toast.makeText(activity, "Profile updated successfully!", Toast.LENGTH_SHORT).show()
+
+                    // Notify the success result.
+                    activity.profileUpdateSuccess()
+                }
+                .addOnFailureListener { e ->
+                    activity.hideProgressDialog()
+                    Log.e(
+                            activity.javaClass.simpleName,
+                            "Error while creating a board.",
+                            e
+                    )
+                }
     }
 
     fun getCurrentUserID(): String {

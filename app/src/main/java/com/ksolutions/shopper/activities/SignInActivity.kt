@@ -161,7 +161,7 @@ class SignInActivity : BaseActivity() {
                         Toast.makeText(applicationContext, "Sign In Failed", Toast.LENGTH_LONG).show()
                         if (task.exception is FirebaseAuthInvalidCredentialsException)
                         {
-                            // The verification code entered was invalid
+                            Toast.makeText(applicationContext, "Invalid OTP", Toast.LENGTH_LONG).show()
                         }
                     }
                 }
@@ -186,15 +186,15 @@ class SignInActivity : BaseActivity() {
         }
     }
 
-    fun signInSuccess(user: User) {
-
+    fun signInSuccess(user: User)
+    {
         hideProgressDialog()
-
         startActivity(Intent(this@SignInActivity, MainActivity::class.java))
         finish()
     }
 
-    private fun setupActionBar() {
+    private fun setupActionBar()
+    {
 
         setSupportActionBar(toolbar_sign_in_activity)
 
