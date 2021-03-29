@@ -26,9 +26,15 @@
     <string name="please_click_back_again_to_exit">Please click back again to exit.</string>
     <string name="please_wait">Please Wait&#8230;</string>
 
-    <string name="nav_my_profile">My Profile</string>
+    <string name="nav_my_profile">Your Profile</string>
     <string name="nav_sign_out">Sign Out</string>
+    <string name="nav_partner">Add Your Business</string>
 
     <string name="update">UPDATE</string>
-    <string name="my_profile">My Profile</string>
+    <string name="my_profile">Your Profile</string>
+    <string name="nav_fav_shops">Your Wishlist</string>
+    <string name="nav_about">About</string>
+    <string name="nav_version">Version</string>
+    <string name="nav_help">"Help and Queries "</string>
+    <string name="nav_privacy">Privacy Policies</string>
 </resources>

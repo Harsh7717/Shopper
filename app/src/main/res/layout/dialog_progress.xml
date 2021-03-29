@@ -11,7 +11,7 @@
         android:id="@+id/progressBar"
         android:layout_width="@dimen/progress_bar_size"
         android:layout_height="@dimen/progress_bar_size"
-        style="@style/SpinKitView.Circle"
+        style="@style/SpinKitView.Large.DoubleBounce"
         app:SpinKit_Color="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_progress_text"

@@ -4,8 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_splash_background"
+    android:background="@drawable/nav_header_main_background"
     tools:context=".activities.SplashActivity">
+
+    <ImageView
+        android:layout_width="@dimen/mobile_input_logo_size"
+        android:layout_height="@dimen/mobile_input_logo_size"
+        android:layout_marginTop="190dp"
+        android:src="@drawable/ic_task_image"
+        app:layout_constraintBottom_toTopOf="@+id/splash_screen_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/splash_screen_title"

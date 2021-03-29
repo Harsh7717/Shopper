@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_my_profile"
-            android:icon="@drawable/ic_nav_user"
-            android:title="@string/nav_my_profile" />
 
+    <item android:title="Personal">
+        <menu>
+            <group
+                android:id="@+id/group1"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_my_profile"
+                    android:icon="@drawable/ic_nav_user"
+                    android:title="@string/nav_my_profile" />
+
+                <item
+                    android:id="@+id/nav_fav_shops"
+                    android:icon="@drawable/ic_baseline_favorite_24"
+                    android:title="@string/nav_fav_shops" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Business">
+        <menu>
+            <group
+                android:id="@+id/group2"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_partner"
+                    android:icon="@drawable/ic_baseline_add_business_24"
+                    android:title="@string/nav_partner" />
+            </group>
+        </menu>
+    </item>
+
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_security"
+            android:title="@string/nav_about" />
+
+        <item
+            android:id="@+id/nav_version"
+            android:icon="@drawable/ic_baseline_build_circle_24"
+            android:title="@string/nav_version" />
+    </group>
+
+    <group
+        android:id="@+id/group4"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_sign_out"
             android:icon="@drawable/ic_nav_sign_out"
             android:title="@string/nav_sign_out" />
+    </group>
+
+    <group
+        android:id="@+id/group5"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_baseline_help_center_24"
+            android:title="@string/nav_help" />
+
+        <item
+            android:id="@+id/nav_privacy"
+            android:icon="@drawable/ic_baseline_privacy_tip_24"
+            android:title="@string/nav_privacy" />
     </group>
 </menu>

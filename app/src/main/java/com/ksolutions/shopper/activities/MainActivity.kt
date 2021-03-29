@@ -39,7 +39,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean
     {
-        when (menuItem.itemId) {
+        when (menuItem.itemId)
+        {
             R.id.nav_my_profile -> {
                 startActivityForResult(Intent(this@MainActivity, MyProfileActivity::class.java), MY_PROFILE_REQUEST_CODE)
             }
@@ -53,6 +54,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 finish()
+            }
+
+            R.id.nav_partner -> {
+                showProgressDialog("Partner with us....")
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
@@ -75,12 +80,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private fun setupActionBar() {
 
         setSupportActionBar(toolbar_main_activity)
+        supportActionBar?.setLogo(R.drawable.logo);
+        supportActionBar?.title = "  " + resources.getString(R.string.app_name)
         toolbar_main_activity.setNavigationIcon(R.drawable.ic_action_navigation_menu)
 
         toolbar_main_activity.setNavigationOnClickListener {
             toggleDrawer()
         }
-        // END
     }
 
     /**
@@ -112,8 +118,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         // The instance of the user name TextView of the navigation view.
         val navUsername = headerView.findViewById<TextView>(R.id.tv_username)
+        val navUserMobile = headerView.findViewById<TextView>(R.id.navigation_mobile)
+
+        val nameParts = user.name.split(' ')
         // Set the user name
-        navUsername.text = user.name
+        navUsername.text = "Hello, " + nameParts[0]
+        navUserMobile.text = user.mobile
     }
 
     /**

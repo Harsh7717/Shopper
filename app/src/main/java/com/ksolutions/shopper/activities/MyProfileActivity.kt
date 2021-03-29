@@ -144,9 +144,10 @@ class MyProfileActivity : BaseActivity() {
 
         val actionBar = supportActionBar
         if (actionBar != null) {
+            actionBar.setLogo(R.drawable.logo)
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
-            actionBar.title = resources.getString(R.string.my_profile)
+            actionBar.title = "  " + resources.getString(R.string.my_profile)
         }
 
         toolbar_my_profile_activity.setNavigationOnClickListener { onBackPressed() }
@@ -237,8 +238,6 @@ class MyProfileActivity : BaseActivity() {
         }
     }
 
-    // TODO (Step 2: Create a function to get the extension of the selected image.)
-    // START
     /**
      * A function to get the extension of selected image.
      */
@@ -254,10 +253,7 @@ class MyProfileActivity : BaseActivity() {
          */
         return MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(uri!!))
     }
-    // END
 
-    // TODO (Step 9: Update the user profile details into the database.)
-    // START
     /**
      * A function to update the user profile details into the database.
      */
@@ -286,8 +282,6 @@ class MyProfileActivity : BaseActivity() {
     }
     // END
 
-    // TODO (Step 4: Create a function to notify the user profile is updated successfully.)
-    // START
     /**
      * A function to notify the user profile is updated successfully.
      */
@@ -303,10 +297,6 @@ class MyProfileActivity : BaseActivity() {
     companion object {
         //A unique code for asking the Read Storage Permission using this we will be check and identify in the method onRequestPermissionsResult
         private const val READ_STORAGE_PERMISSION_CODE = 1
-
-        // TODO (Step 6: Add a constant for image selection from phone storage)
-        // START
         private const val PICK_IMAGE_REQUEST_CODE = 2
-        // END
     }
 }
