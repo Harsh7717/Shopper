@@ -15,6 +15,7 @@ import com.ksolutions.shopper.R
 import com.ksolutions.shopper.firebase.FirestoreClass
 import com.ksolutions.shopper.model.User
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -57,7 +58,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             }
 
             R.id.nav_partner -> {
-                showProgressDialog("Partner with us....")
+                startActivity(Intent(this, BusinessIntro::class.java))
+            }
+
+            R.id.nav_fav_shops -> {
+                startActivity(Intent(this, DashboardActivity::class.java))
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
@@ -74,30 +79,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             FirestoreClass().loadUserData(this@MainActivity)
         } else {
             Log.e("Cancelled", "Cancelled")
-        }
-    }
-
-    private fun setupActionBar() {
-
-        setSupportActionBar(toolbar_main_activity)
-        supportActionBar?.setLogo(R.drawable.logo);
-        supportActionBar?.title = "  " + resources.getString(R.string.app_name)
-        toolbar_main_activity.setNavigationIcon(R.drawable.ic_action_navigation_menu)
-
-        toolbar_main_activity.setNavigationOnClickListener {
-            toggleDrawer()
-        }
-    }
-
-    /**
-     * A function for opening and closing the Navigation Drawer.
-     */
-    private fun toggleDrawer() {
-
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            drawer_layout.openDrawer(GravityCompat.START)
         }
     }
 
@@ -131,5 +112,24 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
      */
     companion object {
         const val MY_PROFILE_REQUEST_CODE: Int = 11
+    }
+
+    private fun toggleDrawer() {
+
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        } else {
+            drawer_layout.openDrawer(GravityCompat.START)
+        }
+    }
+
+    private fun setupActionBar() {
+
+        setSupportActionBar(toolbar_main_activity)
+        toolbar_main_activity.setNavigationIcon(R.drawable.ic_action_navigation_menu)
+
+        toolbar_main_activity.setNavigationOnClickListener {
+            toggleDrawer()
+        }
     }
 }

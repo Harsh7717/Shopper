@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <TextView
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="184dp"
+        android:padding="@dimen/categroy_padding"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        tools:layout_editor_absoluteY="243dp"
+    android:background="@drawable/while_backgroud_primary_outline"/>

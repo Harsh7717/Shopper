@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/aclonica</item>
+        <item>@font/allerta_stencil</item>
+        <item>@font/architects_daughter</item>
+        <item>@font/arizonia</item>
+        <item>@font/artifika</item>
+        <item>@font/bad_script</item>
         <item>@font/bangers</item>
+        <item>@font/belgrano</item>
+        <item>@font/bilbo_swash_caps</item>
+        <item>@font/black_ops_one</item>
+        <item>@font/courgette</item>
+        <item>@font/damion</item>
         <item>@font/righteous</item>
     </array>
 </resources>

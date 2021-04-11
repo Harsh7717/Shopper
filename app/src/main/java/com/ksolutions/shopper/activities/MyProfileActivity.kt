@@ -129,11 +129,7 @@ class MyProfileActivity : BaseActivity() {
                 showImageChooser()
             } else {
                 //Displaying another toast if permission is not granted
-                Toast.makeText(
-                        this,
-                        "Oops, you just denied the permission for storage. You can also allow it from settings.",
-                        Toast.LENGTH_LONG
-                ).show()
+                    showErrorSnackBar("Oops, you just denied the permission for storage. You can also allow it from settings.", true)
             }
         }
     }
@@ -213,6 +209,7 @@ class MyProfileActivity : BaseActivity() {
                                 "Firebase Image URL",
                                 taskSnapshot.metadata!!.reference!!.downloadUrl.toString()
                         )
+                        showErrorSnackBar(taskSnapshot.metadata!!.reference!!.downloadUrl.toString(),false)
 
                         // Get the downloadable url from the task snapshot
                         taskSnapshot.metadata!!.reference!!.downloadUrl

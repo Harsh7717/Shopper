@@ -34,11 +34,10 @@
     <dimen name="app_name_margin_bottom">10dp</dimen>
     <dimen name="input_screen_desc_margin_top">20dp</dimen>
     <dimen name="mobile_input_margin_top">17dp</dimen>
-    <dimen name="country_code_margin_start">25dp</dimen>
-    <dimen name="country_code_text_size">16sp</dimen>
+    <dimen name="category_shop_margin_start">25dp</dimen>
     <dimen name="mobile_input_screen_image_marginTop">5dp</dimen>
     <dimen name="mobile_input_logo_size">170dp</dimen>
-    <dimen name="ccp_outline_radius">3dp</dimen>
+    <dimen name="ccp_outline_radius">0.5dp</dimen>
     <dimen name="mobile_input_margin_left">3dp</dimen>
     <dimen name="mobile_input_margin_right">15dp</dimen>
     <dimen name="mobile_input_text_size">20dp</dimen>
@@ -69,4 +68,14 @@
     <dimen name="my_profile_et_email_marginTop">20dp</dimen>
     <dimen name="my_profile_et_mobile_marginTop">20dp</dimen>
     <dimen name="my_profile_btn_update_marginTop">30dp</dimen>
+    <dimen name="business_intro_left_margin">30dp</dimen>
+    <dimen name="business_intro_top_margin">10dp</dimen>
+    <dimen name="business_intro_desc_text_size">14sp</dimen>
+    <dimen name="business_intro_btn_margin">40dp</dimen>
+    <dimen name="category_drop_text_size">10sp</dimen>
+    <dimen name="categroy_padding">14dp</dimen>
+    <dimen name="left_padding">6dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

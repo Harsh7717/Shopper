@@ -12,7 +12,7 @@ import com.ksolutions.shopper.model.User
 import com.ksolutions.shopper.utils.Constants
 import com.ksolutions.shopper.utils.Constants.USERS
 
-class FirestoreClass {
+class FirestoreClass{
 
     // Create a instance of Firebase Firestore
     private val mFireStore = FirebaseFirestore.getInstance()
@@ -100,7 +100,6 @@ class FirestoreClass {
                     Log.e(activity.javaClass.simpleName, "Profile Data updated successfully!")
 
                     Toast.makeText(activity, "Profile updated successfully!", Toast.LENGTH_SHORT).show()
-
                     // Notify the success result.
                     activity.profileUpdateSuccess()
                 }

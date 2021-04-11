@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_background"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".activities.BusinessCategoryActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_business_category_activity"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/nav_header_main_background"
+            app:titleTextAppearance="@style/TitleBarTextAppearance"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/tv_app_name_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/intro_screen_title_text_marginTop"
+        android:text="@string/app_name"
+        android:fontFamily="@font/righteous"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/intro_screen_title_text_size"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_business_background" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/business_intro_left_margin"
+        android:layout_marginTop="@dimen/business_intro_top_margin"
+        android:layout_marginEnd="@dimen/business_intro_left_margin"
+        android:fontFamily="@font/allerta_stencil"
+        android:text="@string/business_desc_text"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/business_intro_desc_text_size" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/category_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/category_shop_margin_start"
+        android:layout_marginTop="@dimen/business_intro_top_margin"
+        app:startIconDrawable="@drawable/ic_baseline_business_24"
+        android:layout_marginEnd="@dimen/category_shop_margin_start"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <AutoCompleteTextView
+            android:id="@+id/category_drop_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/category"
+            android:textSize="@dimen/et_text_size"
+            android:inputType="none"
+            android:paddingLeft="@dimen/left_padding" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_business_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/business_intro_btn_margin"
+        android:layout_marginTop="@dimen/business_intro_btn_margin"
+        android:layout_marginEnd="@dimen/business_intro_btn_margin"
+        android:background="@drawable/gray_border_shape_button_rounded"
+        android:fontFamily="@font/black_ops_one"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:paddingTop="@dimen/btn_paddingTopBottom"
+        android:paddingBottom="@dimen/btn_paddingTopBottom"
+        android:text="@string/continue_str"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/btn_text_size" />
+</LinearLayout>

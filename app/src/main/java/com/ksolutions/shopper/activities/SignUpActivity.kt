@@ -59,7 +59,8 @@ class SignUpActivity : BaseActivity() {
             }
             override fun onVerificationCompleted(credential: PhoneAuthCredential)
             {
-                Toast.makeText(applicationContext, "Verificatoin Completed", Toast.LENGTH_LONG).show()
+                showErrorSnackBar("Verificatoin Completed",false)
+                //Toast.makeText(applicationContext, "Verificatoin Completed", Toast.LENGTH_LONG).show()
                 signInWithPhoneAuthCredential(credential)
             }
 
@@ -67,13 +68,13 @@ class SignUpActivity : BaseActivity() {
             {
                 // This callback is invoked if an invalid request for verification is made,
                 // for instance if the the phone number format is invalid
-                Toast.makeText(applicationContext, "Failed", Toast.LENGTH_LONG).show()
+                showErrorSnackBar("Facing Problem..Please try again",true)
                 hideProgressDialog()
 
                 if (e is FirebaseAuthInvalidCredentialsException)
                 {
                     // Invalid request
-                    Toast.makeText(applicationContext, "Invalid Phone Number", Toast.LENGTH_LONG).show()
+                    showErrorSnackBar("Please enter valid Phone number.",true)
                 }
                 else if (e is FirebaseTooManyRequestsException)
                 {
@@ -97,7 +98,7 @@ class SignUpActivity : BaseActivity() {
         btn_sign_up.setOnClickListener(){
             if(sign_up_otp.text.toString().isEmpty())
             {
-                showErrorSnackBar("Please enter the OTP.")
+                showErrorSnackBar("Please enter the OTP.",true)
                 sign_up_otp.requestFocus()
             }
             else
@@ -113,7 +114,7 @@ class SignUpActivity : BaseActivity() {
     {
         return when {
             TextUtils.isEmpty(phone) ->{
-                showErrorSnackBar("Please enter Mobile Number.")
+                showErrorSnackBar("Please enter Mobile Number.",true)
                 false
             }
             else -> {
@@ -143,7 +144,7 @@ class SignUpActivity : BaseActivity() {
                         {
                             //startActivity(Intent(this, SignInActivity::class.java))
                             hideProgressDialog()
-                            showErrorSnackBar("Mobile Number Already Registered Please Sign In.")
+                            showErrorSnackBar("Mobile Number Already Registered Please Sign In.",true)
                             Handler().postDelayed({
                                 startActivity(Intent(this, SignInActivity::class.java))
                                 finish()
@@ -155,10 +156,11 @@ class SignUpActivity : BaseActivity() {
                     }
                     else
                     {
-                        Toast.makeText(applicationContext, "Sign In Failed", Toast.LENGTH_LONG).show()
+                        hideProgressDialog()
+                        showErrorSnackBar("OTP Verification Failed..",true)
                         if (task.exception is FirebaseAuthInvalidCredentialsException)
                         {
-                            // The verification code entered was invalid
+                            showErrorSnackBar("Please Enter Valid OTP..",true)
                         }
                     }
                 }

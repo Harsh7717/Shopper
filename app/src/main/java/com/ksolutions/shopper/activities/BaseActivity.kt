@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.ksolutions.shopper.R
@@ -65,15 +66,28 @@ open class BaseActivity : AppCompatActivity() {
         Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
-    fun showErrorSnackBar(message: String) {
+    fun showErrorSnackBar(message: String, errorMessage:Boolean) {
         val snackBar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
         val snackBarView = snackBar.view
-        snackBarView.setBackgroundColor(
-            ContextCompat.getColor(
-                this@BaseActivity,
-                R.color.snackbar_error_color
+
+        if(errorMessage)
+        {
+            snackBarView.setBackgroundColor(
+                    ContextCompat.getColor(
+                            this@BaseActivity,
+                            R.color.snackbar_error_color
+                    )
             )
-        )
+        }
+        else
+        {
+            snackBarView.setBackgroundColor(
+                    ContextCompat.getColor(
+                            this@BaseActivity,
+                            R.color.snackbar_success_color
+                    )
+            )
+        }
         snackBar.show()
     }
 

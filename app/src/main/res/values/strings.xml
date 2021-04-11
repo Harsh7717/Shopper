@@ -37,4 +37,16 @@
     <string name="nav_version">Version</string>
     <string name="nav_help">"Help and Queries "</string>
     <string name="nav_privacy">Privacy Policies</string>
+    <string name="business_with_us">Business with us</string>
+    <string name="hello_there">Hello There,</string>
+    <string name="business_intro_desc">We\'re extremly happy that you\'re interested to add your businees with us..</string>
+    <string name="continue_str">Continue...</string>
+    <string name="category">Category</string>
+    <string name="business_desc_text">Please Select the category of your Business</string>
+
+    <string name="title_activity_dash">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
 </resources>

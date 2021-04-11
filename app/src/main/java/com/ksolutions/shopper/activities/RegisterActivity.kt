@@ -80,19 +80,19 @@ class RegisterActivity : BaseActivity() {
     private fun validateForm(name: String, phone: String, email: String, dob: String): Boolean {
         return when {
             TextUtils.isEmpty(name) -> {
-                showErrorSnackBar("Please enter name.")
+                showErrorSnackBar("Please enter name.",true)
                 false
             }
             TextUtils.isEmpty(email) -> {
-                showErrorSnackBar("Please enter email.")
+                showErrorSnackBar("Please enter email.",true)
                 false
             }
             dob.length!=11 || dob[2]!='/' || dob[6]!='/'-> {
-                showErrorSnackBar("Please enter valid Date of Birth.")
+                showErrorSnackBar("Please enter valid Date of Birth.",true)
                 false
             }
             TextUtils.isEmpty(phone) ->{
-                showErrorSnackBar("Please enter Mobile Number.")
+                showErrorSnackBar("Please enter Mobile Number.",true)
                 false
             }
             else -> {
@@ -103,12 +103,7 @@ class RegisterActivity : BaseActivity() {
 
     fun userRegisteredSuccess()
     {
-
-        Toast.makeText(
-                this@RegisterActivity,
-                "You have successfully registered.",
-                Toast.LENGTH_SHORT
-        ).show()
+        showErrorSnackBar("You have successfully registered.",false)
 
         // Hide the progress dialog
         hideProgressDialog()

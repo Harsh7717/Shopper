@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="shopsCategory">
+        <item name = "category13">Beauty</item>
+        <item name = "category8">Electronics</item>
+        <item name = "category2">Fashion and Dressing</item>
+        <item name = "category3">Footwear</item>
+        <item name = "category4">Fruits and Vegetables</item>
+        <item name = "category10">Furniture</item>
+        <item name = "category1">General and Kirana Store</item>
+        <item name = "category6">Gifts</item>
+        <item name = "category7">Hotels and Restaurant</item>
+        <item name = "category11">Jewellery</item>
+        <item name = "category12">Medical store</item>
+        <item name = "category9">Mobiles</item>
+        <item name = "category5">Sports</item>
+        <item name = "category14">Others</item>
+    </string-array>
+</resources>

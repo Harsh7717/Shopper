@@ -43,6 +43,7 @@
         android:layout_marginStart="@dimen/intro_text_marginStartEnd"
         android:layout_marginTop="@dimen/intro_text_marginTop"
         android:layout_marginEnd="@dimen/intro_text_marginStartEnd"
+        android:fontFamily="@font/allerta_stencil"
         android:gravity="center"
         android:lineSpacingExtra="@dimen/intro_text_line_spacing_extra"
         android:text="@string/intro_text_description"
