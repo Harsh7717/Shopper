@@ -18,11 +18,11 @@ Search Screen             |  Search Result Screen
 
 Business Details Screen             |  Business Location Screen
 :-------------------------:|:-------------------------:
-![alt text](https://github.com/Harsh7717/Shopper/blob/master/Business_detail.jpeg?raw=true)  |  ![alt text](https://github.com/Harsh7717/Shopper/blob/master/location.jpeg?raw=true)
+![alt text](https://github.com/Harsh7717/Shopper/blob/master/Business_detail.jpeg?raw=true)  |  ![alt text](https://github.com/Harsh7717/Shopper/blob/master/Location.jpeg?raw=true)
 
 Dashboard Screen             |  Update Profie Screen
 :-------------------------:|:-------------------------:
-![alt text](https://github.com/Harsh7717/Shopper/blob/master/DashBoard.jpeg?raw=true)  |  ![alt text](https://github.com/Harsh7717/Shopper/blob/master/Update_Profie.jpeg?raw=true)
+![alt text](https://github.com/Harsh7717/Shopper/blob/master/DashBoard.jpeg?raw=true)  |  ![alt text](https://github.com/Harsh7717/Shopper/blob/master/Update_Profile.jpeg?raw=true)
 
 Add Business Screen             |  Filling Business Details Screen
 :-------------------------:|:-------------------------:
