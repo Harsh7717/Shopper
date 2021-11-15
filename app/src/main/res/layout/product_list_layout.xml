@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_view_margin_startEnd"
+        android:layout_marginTop="@dimen/card_view_margin_startEnd"
+        android:layout_marginEnd="@dimen/card_view_margin_startEnd"
+        android:layout_marginBottom="@dimen/card_view_margin_startEnd"
+        android:elevation="@dimen/card_view_elevation"
+        android:paddingStart="5dp"
+        app:cardCornerRadius="@dimen/card_view_corner_radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:id="@+id/ll_product_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/item_image_padding"
+                android:paddingStart="@dimen/card_view_margin_startEnd"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_product_image"
+                    android:layout_width="@dimen/item_image_width"
+                    android:layout_height="@dimen/item_image_height"
+                    android:contentDescription="@string/content_description"
+                    android:scaleType="centerCrop" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_product_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/item_image_title_price_marginStart"
+                android:layout_marginEnd="@dimen/item_image_title_price_marginStart"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ib_delete_product"
+                app:layout_constraintStart_toEndOf="@id/ll_product_image"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_product_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondary_text_color"
+                    android:textSize="@dimen/rv_item_name_textSize"
+                    tools:text="Name" />
+
+                <TextView
+                    android:id="@+id/tv_product_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/rv_item_price_marginTop"
+                    android:textColor="@color/secondary_text_color"
+                    android:textSize="@dimen/et_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_product_business_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/rv_item_price_marginTop"
+                    android:textColor="@color/secondary_text_color"
+                    android:textSize="@dimen/et_text_size" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/ib_delete_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/content_description"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:padding="@dimen/delete_icon_padding"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/ll_product_details"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

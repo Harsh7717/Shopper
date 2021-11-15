@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_main_activity"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:paddingRight="12dp"
+            android:background="?attr/colorPrimary"
+            app:titleTextAppearance="@style/TitleBarTextAppearance"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <TextView
+            android:id="@+id/tv_home_location"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/location_view_margin"
+            android:layout_marginEnd="@dimen/location_view_margin"
+            android:layout_marginBottom="@dimen/search_view_margin"
+            android:layout_marginTop="@dimen/search_view_margin"
+            android:drawablePadding="@dimen/left_padding"
+            android:background="@drawable/home_location_view_background"
+            android:focusableInTouchMode="false"
+            android:fontFamily="@font/antic"
+            android:gravity="center_vertical"
+            android:hint="@string/location"
+            android:maxLines="1"
+            android:paddingStart="15dp"
+            android:textSize="@dimen/location_text_size"
+            app:drawableStartCompat="@drawable/ic_baseline_my_location_24"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/home_search_view"
+            style="@style/CustomSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/search_view_margin"
+            android:layout_marginEnd="@dimen/search_view_margin"
+            android:layout_marginBottom="@dimen/search_view_margin"
+            android:background="@drawable/search_view_background"
+            android:foreground="?attr/selectableItemBackground"
+            android:goIcon="@drawable/ic_go"
+            android:focusableInTouchMode="false"
+            android:imeOptions="actionGo"
+            app:defaultQueryHint="@string/search_view_hint"
+            app:goIcon="@drawable/ic_go"
+            app:iconifiedByDefault="false"
+            app:queryHint="@string/search_view_hint"
+            app:searchIcon="@drawable/ic_baseline_search_24"
+            app:voiceIcon="@drawable/ic_baseline_keyboard_voice_24">
+        </androidx.appcompat.widget.SearchView>
+    </com.google.android.material.appbar.AppBarLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

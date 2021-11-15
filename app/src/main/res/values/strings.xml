@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Shopper</string>
+    <string name="app_name">whatNeed</string>
+    <string name="google_maps_api_key">AIzaSyDqY9-Gk2IuSNOFz9FH1Xa4sWV8ECJmmAg</string>
 
     <string name="image_contentDescription">image</string>
     <string name="let_s_get_started_text">Welcome</string>
@@ -24,7 +25,7 @@
     <string name="sign_up_description_text">Please Enter Your 10 Digit Mobile Number for the OTP verification</string>
 
     <string name="please_click_back_again_to_exit">Please click back again to exit.</string>
-    <string name="please_wait">Please Wait&#8230;</string>
+    <string name="please_wait">Please Wait</string>
 
     <string name="nav_my_profile">Your Profile</string>
     <string name="nav_sign_out">Sign Out</string>
@@ -39,14 +40,69 @@
     <string name="nav_privacy">Privacy Policies</string>
     <string name="business_with_us">Business with us</string>
     <string name="hello_there">Hello There,</string>
-    <string name="business_intro_desc">We\'re extremly happy that you\'re interested to add your businees with us..</string>
-    <string name="continue_str">Continue...</string>
+    <string name="business_intro_desc">We\'re extremly happy that you\'re interested to add your business with us..</string>
+    <string name="continue_str">Continue</string>
     <string name="category">Category</string>
     <string name="business_desc_text">Please Select the category of your Business</string>
 
     <string name="title_activity_dash">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">"  " Home</string>
+    <string name="title_dashboard">"  " Dashboard</string>
+    <string name="title_notifications">"  " Notifications</string>
+    <string name="title_add_business">Add your Business</string>
+    <string name="content_description">image</string>
+    <string name="business_name">Business Name</string>
+    <string name="owner_name">Owner Name</string>
+    <string name="Address">Address</string>
+    <string name="reg_no">Registration No</string>
+    <string name="location">Detect Location</string>
+    <string name="owner_contact">Owner Contact Number</string>
+    <string name="product_uploaded_success_message">Your Business has been added successfully</string>
+    <string name="no_business_added_yet">You haven\'t added any business yet</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_add_business">Add Business</string>
+    <string name="business_list_padding_top">60dp</string>
+
+    <string name="title_product_details">PRODUCT DETAILS</string>
+    <string name="lbl_product_description">Product Description</string>
+    <string name="lbl_product_details_stock_quantity">Stock Quantity</string>
+    <string name="business_details">Business Details</string>
+    <string name="business_reg_no">"Registration No"</string>
+    <string name="business_address">Business Address</string>
+    <string name="location_lable">"Location"</string>
+    <string name="products_and_services">Products and Services</string>
+    <string name="add_products_and_services">Add Product and Services</string>
+    <string name="hint_prodcut_title">Product Title</string>
+    <string name="hint_product_description">Product Description</string>
+    <string name="hint_product_price">Price</string>
+    <string name="hint_product_quantity">Quantity</string>
+    <string name="text_add_image">ADD IMAGE</string>
+    <string name="btn_text_save">SAVE</string>
+    <string name="no_product_added_yet">You haven\'t added any product to your business</string>
+    <string name="search_view_hint">Search for Shop, Products and More</string>
+    <string name="settings_description">search setting description</string>
+    <string name="no_business_found">Unable to detect any shop nearby your location</string>
+    <string name="no_product_found">Not any Prduct is matching from your search</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_street_vendors">Vendors</string>
+    <string name="nav_vendor">Vendors Mode</string>
+    <string name="map_loading">Loading Maps…</string>
+
+
+    <string name="hello_message_fragment">Hello %s</string>
+    <string name="go_in_inner_fragment">Go in inner fragment</string>
+    <string name="menu_info">Info</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_help">Help</string>
+    <string name="no_vendor_found">Not any Vendors found Nearby you</string>
+    <string name="key_not_found">Key Vendor not found</string>
+    <string name="vendor_registration">Vendor Registration</string>
+    <string name="vendor_register_description_text">Hello, Please Register yourself with us</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="selling_item">What are you selling..?</string>
+    <string name="registerr">Register</string>
+
 
 </resources>

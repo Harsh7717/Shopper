@@ -2,17 +2,27 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
+        <item>@font/aldrich</item>
+        <item>@font/allerta</item>
         <item>@font/allerta_stencil</item>
+        <item>@font/anaheim</item>
+        <item>@font/antic</item>
         <item>@font/architects_daughter</item>
+        <item>@font/archivo_narrow</item>
         <item>@font/arizonia</item>
+        <item>@font/armata</item>
         <item>@font/artifika</item>
         <item>@font/bad_script</item>
         <item>@font/bangers</item>
         <item>@font/belgrano</item>
         <item>@font/bilbo_swash_caps</item>
+        <item>@font/biryani_extralight</item>
         <item>@font/black_ops_one</item>
+        <item>@font/bungee</item>
+        <item>@font/contrail_one</item>
         <item>@font/courgette</item>
         <item>@font/damion</item>
+        <item>@font/orbitron</item>
         <item>@font/righteous</item>
     </array>
 </resources>

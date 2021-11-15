@@ -28,6 +28,11 @@
                     android:id="@+id/nav_partner"
                     android:icon="@drawable/ic_baseline_add_business_24"
                     android:title="@string/nav_partner" />
+
+                <item
+                    android:id="@+id/nav_vendor"
+                    android:icon="@drawable/ic_baseline_bike_scooter_24"
+                    android:title="@string/nav_vendor" />
             </group>
         </menu>
     </item>

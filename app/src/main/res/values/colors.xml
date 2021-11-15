@@ -20,4 +20,8 @@
     <color name="snackbar_error_color">#F72400</color>
     <color name="snackbar_success_color">#22AC28</color>
 
+    <color name="colorImageViewBackground">#E1E1E1</color>
+    <color name="colorSecondaryText">#989898</color>
+    <color name="colorBorder">#E8E6E6</color>
+
 </resources>

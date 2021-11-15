@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.BusinessInfo">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_business_details_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/nav_header_main_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:title="@string/business_details"
+        app:titleTextColor="@color/white"
+        app:titleTextAppearance="@style/TitleBarTextAppearance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_business_details_activity">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_business_detail_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/business_detail_image_height"
+                    android:background="@color/colorImageViewBackground"
+                    android:contentDescription="@string/content_description"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/divider_margin"
+                    android:layout_marginStart="@dimen/card_view_margin_startEnd"
+                    android:layout_marginEnd="@dimen/card_view_margin_startEnd"
+                    android:elevation="@dimen/card_view_elevation"
+                    app:cardCornerRadius="@dimen/card_view_corner_radius"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_business_detail_image">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/btn_marginStartEnd">
+                        <TextView
+                            android:id="@+id/tv_business_details_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/business_title_margin_top"
+                            android:textColor="@color/black"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:textSize="@dimen/business_details_title_textSize"
+                            tools:text="K Solution Pvt Ltd"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tv_business_details_category"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/business_item_paddingTopBottom"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:layout_marginEnd="@dimen/product_details_label_margin"
+                            android:text="@string/business_address"
+                            android:textColor="@color/secondary_text_color"
+                            android:textSize="@dimen/business_details_category_textSize"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_business_details_title" />
+
+                        <View
+                            android:id="@+id/view_divider1"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/divider_margin_top"
+                            android:layout_marginStart="@dimen/divider_margin"
+                            android:layout_marginEnd="@dimen/divider_margin"
+                            android:background="@android:color/darker_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_business_details_category"/>
+                        <TextView
+                            android:id="@+id/tv_business_details_address_lable"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/business_item_paddingTopBottom"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:layout_marginEnd="@dimen/product_details_label_margin"
+                            android:text="@string/business_address"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/business_details_label_textSize"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_divider1" />
+
+                        <TextView
+                            android:id="@+id/tv_business_details_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/business_item_paddingTopBottom"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:layout_marginEnd="@dimen/product_details_label_margin"
+                            android:text="@string/business_address"
+                            android:textColor="@color/secondary_text_color"
+                            android:textSize="@dimen/product_details_label_textSize"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_business_details_address_lable" />
+                        <View
+                            android:id="@+id/view_divider2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/divider_margin_top"
+                            android:layout_marginStart="@dimen/divider_margin"
+                            android:layout_marginEnd="@dimen/divider_margin"
+                            android:background="@android:color/darker_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_business_details_address"/>
+
+                        <TextView
+                            android:id="@+id/tv_business_details_owner_name_lable"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/business_item_paddingTopBottom"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:layout_marginEnd="@dimen/product_details_label_margin"
+                            android:textColor="@color/black"
+                            android:text="@string/owner_name"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/business_details_label_textSize"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_divider2" />
+
+                        <TextView
+                            android:id="@+id/tv_business_details_owner_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/business_item_paddingTopBottom"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:layout_marginEnd="@dimen/product_details_label_margin"
+                            android:textColor="@color/colorSecondaryText"
+                            android:textSize="@dimen/product_details_description_textSize"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_business_details_owner_name_lable"
+                            tools:text="Harsh Kesharwani" />
+
+                        <View
+                            android:id="@+id/view_divider3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/divider_margin_top"
+                            android:layout_marginStart="@dimen/divider_margin"
+                            android:layout_marginEnd="@dimen/divider_margin"
+                            android:background="@android:color/darker_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_business_details_owner_name"/>
+
+                        <TextView
+                            android:id="@+id/tv_business_details_contact_lable"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/business_item_paddingTopBottom"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:layout_marginEnd="@dimen/product_details_label_margin"
+                            android:text="@string/owner_contact"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/business_details_label_textSize"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_divider3" />
+
+                        <TextView
+                            android:id="@+id/tv_business_details_owner_contact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/business_item_paddingTopBottom"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:layout_marginEnd="@dimen/product_details_label_margin"
+                            android:textColor="@color/colorSecondaryText"
+                            android:textSize="@dimen/product_details_description_textSize"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_business_details_contact_lable"
+                            tools:text="+918827987717" />
+
+                        <View
+                            android:id="@+id/view_divider4"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/divider_margin_top"
+                            android:layout_marginStart="@dimen/divider_margin"
+                            android:layout_marginEnd="@dimen/divider_margin"
+                            android:background="@android:color/darker_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_business_details_owner_contact"/>
+
+                        <TextView
+                            android:id="@+id/tv_business_details_reg_no_lable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:layout_marginTop="@dimen/business_item_paddingTopBottom"
+                            android:layout_marginEnd="@dimen/product_details_label_margin"
+                            android:text="@string/business_reg_no"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/business_details_label_textSize"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_divider4" />
+
+                        <TextView
+                            android:id="@+id/tv_business_details_reg_no"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:layout_marginTop="@dimen/business_item_paddingTopBottom"
+                            android:layout_marginEnd="@dimen/product_details_label_margin"
+                            android:text="XXXXXXX"
+                            android:textColor="@color/colorSecondaryText"
+                            android:textSize="@dimen/product_details_description_textSize"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_business_details_reg_no_lable" />
+
+                        <View
+                            android:id="@+id/view_divider5"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/divider_margin_top"
+                            android:layout_marginStart="@dimen/divider_margin"
+                            android:layout_marginEnd="@dimen/divider_margin"
+                            android:background="@android:color/darker_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_business_details_reg_no"/>
+
+                        <TextView
+                            android:id="@+id/tv_business_details_location_lable"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/product_details_label_margin"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="@dimen/product_details_label_margin"
+                            android:text="@string/location_lable"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/business_details_label_textSize"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_divider5" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_business_details_location"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_divider5">
+
+                            <TextView
+                                android:id="@+id/tv_business_details_location"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/product_details_label_margin"
+                                android:layout_marginTop="18dp"
+                                android:layout_marginEnd="@dimen/product_details_label_margin"
+                                android:text="XXXXXXXX"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorSecondaryText"
+                                android:textSize="@dimen/product_details_description_textSize"
+                                tools:layout_editor_absoluteX="16dp"
+                                tools:layout_editor_absoluteY="568dp" />
+
+                            <ImageButton
+                                android:id="@+id/btn_business_detail_map"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:foreground="?attr/selectableItemBackgroundBorderless"
+                                android:layout_marginTop="@dimen/location_icon_margin"
+                                android:layout_marginEnd="@dimen/location_icon_margin"
+                                android:layout_marginBottom="@dimen/location_icon_margin"
+                                android:layout_marginStart="@dimen/location_icon_margin"
+                                android:contentDescription="@string/content_description"
+                                android:scaleType="fitXY"
+                                android:layout_gravity="end"
+                                android:src="@drawable/ic_baseline_location_on_24" />
+                        </LinearLayout>
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_product_and_services"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/btn_marginStartEnd"
+                            android:layout_marginEnd="@dimen/btn_marginStartEnd"
+                            android:background="@drawable/shape_button_rounded"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:gravity="center"
+                            android:text="@string/products_and_services"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/btn_text_size"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/ll_business_details_location" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

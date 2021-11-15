@@ -23,7 +23,7 @@
     <dimen name="authentication_description_text_size">16sp</dimen>
     <dimen name="authentication_screen_marginStartEnd">25dp</dimen>
     <dimen name="authentication_screen_card_view_marginTop">30dp</dimen>
-    <dimen name="card_view_elevation">10dp</dimen>
+    <dimen name="card_view_elevation">15dp</dimen>
     <dimen name="card_view_corner_radius">10dp</dimen>
     <dimen name="card_view_layout_content_padding">16dp</dimen>
     <dimen name="authentication_screen_til_marginStartEnd">16dp</dimen>
@@ -78,4 +78,81 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="toolbar_title_paddingStart">-25dp</dimen>
+    <dimen name="add_business_header_image_height">250dp</dimen>
+    <dimen name="add_update_business_icon_padding">16dp</dimen>
+    <dimen name="et_textSize">16sp</dimen>
+    <dimen name="et_padding">16dp</dimen>
+    <dimen name="btn_textSize">18sp</dimen>
+    <dimen name="btn_padding">8dp</dimen>
+    <dimen name="lbl_text_view_textSize">16sp</dimen>
+
+    <dimen name="item_list_marginTop">40dp</dimen>
+    <dimen name="item_list_padding">10dp</dimen>
+    <dimen name="item_image_padding">2dp</dimen>
+    <dimen name="item_image_width">80dp</dimen>
+    <dimen name="item_image_height">70dp</dimen>
+    <dimen name="item_image_title_price_marginStart">10dp</dimen>
+    <dimen name="delete_icon_padding">5dp</dimen>
+    <dimen name="rv_item_name_textSize">14sp</dimen>
+    <dimen name="grey_border_stroke_size">1dp</dimen>
+    <dimen name="grey_border_radius">2dp</dimen>
+    <dimen name="divider_height">1.5dp</dimen>
+    <dimen name="business_item_paddingStartEnd">10dp</dimen>
+    <dimen name="business_item_paddingTopBottom">5dp</dimen>
+
+    <dimen name="item_business_image_height">150dp</dimen>
+    <dimen name="item_business_image_margin">2dp</dimen>
+    <dimen name="business_item_textSize">20sp</dimen>
+    <dimen name="business_item_address_textSize">15sp</dimen>
+    <dimen name="item_business_padding">1dp</dimen>
+    <dimen name="item_business_margin">5dp</dimen>
+    <dimen name="business_list_padding_top">40dp</dimen>
+
+    <dimen name="business_detail_image_height">250dp</dimen>
+    <dimen name="product_details_title_price_marginTop">16dp</dimen>
+    <dimen name="product_details_title_price_padding">16dp</dimen>
+    <dimen name="product_details_title_textSize">16sp</dimen>
+    <dimen name="product_details_price_textSize">14sp</dimen>
+    <dimen name="product_details_label_textSize">16sp</dimen>
+    <dimen name="product_details_label_margin">16dp</dimen>
+    <dimen name="product_details_stock_quantity_paddingStartEnd">16dp</dimen>
+    <dimen name="product_details_stock_quantity_paddingTopBottom">5dp</dimen>
+    <dimen name="product_details_description_textSize">14sp</dimen>
+    <dimen name="product_details_stock_quantity_textSize">16sp</dimen>
+    <dimen name="business_details_title_textSize">30sp</dimen>
+    <dimen name="business_title_margin_top">10dp</dimen>
+    <dimen name="business_details_category_textSize">12sp</dimen>
+    <dimen name="business_details_label_textSize">12sp</dimen>
+    <dimen name="divider_margin">10dp</dimen>
+    <dimen name="divider_margin_top">6dp</dimen>
+    <dimen name="card_view_margin_startEnd">8dp</dimen>
+    <dimen name="location_icon_dimen">30dp</dimen>
+    <dimen name="location_icon_margin">14dp</dimen>
+
+    <dimen name="main_content_padding">16dp</dimen>
+    <dimen name="edit_text_text_size">16sp</dimen>
+    <dimen name="add_screen_til_marginTop">5dp</dimen>
+    <dimen name="add_screen_place_image_size">200dp</dimen>
+    <dimen name="add_screen_place_image_marginTop">15dp</dimen>
+    <dimen name="add_screen_place_image_padding">2dp</dimen>
+    <dimen name="add_screen_text_add_image_marginTop">96dp</dimen>
+    <dimen name="add_screen_text_add_image_padding">10dp</dimen>
+    <dimen name="add_screen_text_add_image_textSize">18sp</dimen>
+    <dimen name="add_screen_btn_save_marginTop">24dp</dimen>
+    <dimen name="add_screen_btn_save_paddingTopBottom">8dp</dimen>
+    <dimen name="image_border_stroke_size">0.5dp</dimen>
+    <dimen name="add_place_image_shape_radius">3dp</dimen>
+    <dimen name="button_radius">10dp</dimen>
+    <dimen name="no_records_available_text_size">16sp</dimen>
+    <dimen name="rv_item_price_marginTop">2dp</dimen>
+    <dimen name="product_list_padding_top">30dp</dimen>
+    <dimen name="search_view_margin">10dp</dimen>
+    <dimen name="et_home_location_margin_top">1dp</dimen>
+    <dimen name="location_view_margin">12dp</dimen>
+    <dimen name="location_text_size">14sp</dimen>
+    <dimen name="home_business_list_padding_top">170dp</dimen>
+    <dimen name="search_view_product_padding_top">55dp</dimen>
+
 </resources>

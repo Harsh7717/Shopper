@@ -15,12 +15,28 @@
             android:id="@+id/toolbar_main_activity"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:paddingRight="12dp"
             android:background="?attr/colorPrimary"
             app:titleTextAppearance="@style/TitleBarTextAppearance"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/home_search_view"
+            style="@style/CustomSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/search_view_margin"
+            android:layout_marginEnd="@dimen/search_view_margin"
+            android:layout_marginBottom="@dimen/search_view_margin"
+            android:background="@drawable/search_view_background"
+            android:foreground="?attr/selectableItemBackground"
+            android:goIcon="@drawable/ic_go"
+            app:defaultQueryHint="@string/search_view_hint"
+            app:goIcon="@drawable/ic_go"
+            app:iconifiedByDefault="false"
+            app:queryHint="@string/search_view_hint"
+            app:searchIcon="@drawable/ic_baseline_search_24"
+            app:voiceIcon="@drawable/ic_baseline_keyboard_voice_24">
+        </androidx.appcompat.widget.SearchView>
     </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_main" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
