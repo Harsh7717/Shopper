@@ -41,6 +41,7 @@ class VendorHomeFragment : BaseFragment(){
     private var currentPostalCode: String? = PublicValues.userPostalCode
 
     private lateinit var userLocation:LatLng
+    private var mLocation: Location? = null
     private  var mMap: GoogleMap?=null
     private var marker: Marker?=null
 
@@ -149,7 +150,6 @@ class VendorHomeFragment : BaseFragment(){
         marker = mMap!!.addMarker(MarkerOptions().position(userLocation).icon(BitmapDescriptorFactory.fromResource(R.drawable.myicon)).title("You are here"))
 
         if (isAdded && isVisible) {
-            showErrorSnackBar("Added and Visible",false)
             updateAddress()
         }
         else {
@@ -166,10 +166,10 @@ class VendorHomeFragment : BaseFragment(){
 
         mLocationListener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
-
-                userLocation = LatLng(location.latitude, location.longitude)
-                currentLat = location.latitude
-                currentLong = location.longitude
+                mLocation = location
+                userLocation = LatLng(mLocation!!.latitude, mLocation!!.longitude)
+                currentLat = mLocation!!.latitude
+                currentLong = mLocation!!.longitude
                 
                 mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
 
@@ -179,7 +179,6 @@ class VendorHomeFragment : BaseFragment(){
                     marker!!.position = userLocation
 
                 if (isAdded && isVisible) {
-                    showErrorSnackBar("Added and Visible",false)
                     updateAddress()
                 }
                 else {

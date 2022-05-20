@@ -13,7 +13,6 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
-import android.os.Looper
 import android.provider.Settings
 import android.util.Log
 import android.view.MenuItem
@@ -52,7 +51,6 @@ import com.ksolutions.whatNeed.ui.fragments.notifications.NotificationsFragment
 import com.ksolutions.whatNeed.ui.fragments.vendors.VendorsFragment
 import com.ksolutions.whatNeed.utils.Constants
 import com.ksolutions.whatNeed.utils.GetAddressFromLatLng
-import com.ksolutions.whatNeed.utils.LocationHandler
 import com.ksolutions.whatNeed.utils.PublicValues
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -272,7 +270,16 @@ class MainActivity : BaseActivity(), FragmentUpdateCallback, NavigationView.OnNa
 
         mFusedLocationClient.lastLocation.addOnSuccessListener { location : Location? ->
 
-            mLocation = location
+            if(location == null) {
+                val newLocation: Location = Location("flp")
+                newLocation.latitude = 37.377166
+                newLocation.longitude = -122.086966
+                newLocation.accuracy = 3.0f
+
+                mLocation = newLocation
+            }
+            else
+                mLocation = location
 
             userLatitude = mLocation!!.latitude
             PublicValues.userLatitude = mLocation!!.latitude

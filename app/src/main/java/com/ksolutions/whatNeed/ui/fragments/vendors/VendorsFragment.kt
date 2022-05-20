@@ -1,23 +1,28 @@
 package com.ksolutions.whatNeed.ui.fragments.vendors
 
 import android.Manifest
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context.LOCATION_SERVICE
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.graphics.Insets.add
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
 import android.widget.RelativeLayout
 import androidx.core.app.ActivityCompat
+import androidx.core.view.OneShotPreDrawListener.add
 import butterknife.ButterKnife
 import butterknife.Unbinder
 import com.firebase.geofire.*
@@ -30,16 +35,24 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.firebase.database.*
 import com.ksolutions.whatNeed.R
+import com.ksolutions.whatNeed.models.AnimationModel
 import com.ksolutions.whatNeed.models.GeoQueryModel
 import com.ksolutions.whatNeed.models.VendorGeoModel
 import com.ksolutions.whatNeed.models.VendorInfoModel
+import com.ksolutions.whatNeed.remote.IGoogleAPI
+import com.ksolutions.whatNeed.remote.RetrofitClient
 import com.ksolutions.whatNeed.ui.fragments.BaseFragment
 import com.ksolutions.whatNeed.utils.*
+import io.reactivex.Scheduler
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.schedulers.Schedulers.io
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.IOException
+import java.lang.Exception
+import java.lang.StringBuilder
 import java.util.*
+import org.json.JSONObject as JSONObject
 
 
 class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFailedListner {
@@ -47,8 +60,9 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
     val TAB_POSITION = 0
     private var mUnbinder: Unbinder? = null
 
-    private var marker: Marker?=null
+    private var myMarker: Marker?=null
     private lateinit var userLocation:LatLng
+    private var mLocation: Location? = null
     private lateinit var mMap: GoogleMap
     private lateinit var mapFragment: SupportMapFragment
 
@@ -67,6 +81,14 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
     lateinit var  iFirebaseFailedListener: FirebaseFailedListner
 
     var cityName = ""
+
+    //val compositeDisposable = CompositeDisposable()
+    private val compositeDisposable = io.reactivex.disposables.CompositeDisposable()
+
+    private lateinit var iGoogleAPI: IGoogleAPI
+
+
+
 
    private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -98,6 +120,8 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
         }
     }
 
+//    adding comments
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -106,8 +130,16 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
         val rootView = inflater.inflate(R.layout.fragment_vendors, container, false)
         iFirebaseVendorInfoListener = this
         iFirebaseFailedListener = this
+
+        iGoogleAPI = RetrofitClient.instance!!.create(IGoogleAPI::class.java)
+
         mUnbinder = ButterKnife.bind(this, rootView)
         return rootView
+    }
+
+    override fun onStop() {
+        compositeDisposable.clear()
+        super.onStop()
     }
 
     override fun onDestroyView() {
@@ -132,20 +164,32 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
     {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         mFusedLocationClient.lastLocation.addOnSuccessListener { location : Location? ->
-            userLocation = LatLng(location!!.latitude, location.longitude)
+
+            if(location == null) {
+                val newLocation = Location("flp")
+                newLocation.latitude = 37.377166
+                newLocation.longitude = -122.086966
+                newLocation.accuracy = 3.0f
+
+                mLocation = newLocation
+            }
+            else
+                mLocation = location
+
+            userLocation = LatLng(mLocation!!.latitude, mLocation!!.longitude)
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
 
-            if(marker==null)
-                marker = mMap.addMarker(MarkerOptions().position(userLocation).icon(BitmapDescriptorFactory.fromResource(R.drawable.myicon)).title("Your are Here"))
+            if(myMarker==null)
+                myMarker = mMap.addMarker(MarkerOptions().position(userLocation).icon(BitmapDescriptorFactory.fromResource(R.drawable.myicon)).title("Your are Here"))
             else
-                marker!!.position = userLocation
+                myMarker!!.position = userLocation
 
             hideProgressDialog()
 
             previousLocation = location
             currentLocation = location
 
-            loadAllVendors(location)
+            loadAllVendors(mLocation!!)
             updateLocation()
         }
     }
@@ -157,13 +201,14 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
 
         mLocationListener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
+                mLocation = location
                 userLocation = LatLng(location.latitude, location.longitude)
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
 
-                if(marker==null)
-                    marker = mMap.addMarker(MarkerOptions().position(userLocation).icon(BitmapDescriptorFactory.fromResource(R.drawable.myicon)).title("Your are Here"))
+                if(myMarker==null)
+                    myMarker = mMap.addMarker(MarkerOptions().position(userLocation).icon(BitmapDescriptorFactory.fromResource(R.drawable.myicon)).title("Your are Here"))
                 else
-                    marker!!.position = userLocation
+                    myMarker!!.position = userLocation
 
                 if(isAdded && isVisible)
                 {
@@ -203,7 +248,7 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
                 mMap.setOnMyLocationClickListener {
-
+                    loadAllVendors(mLocation!!)
                 }
 
                 val view = mapFragment.requireView().findViewById<View>("1".toInt())!!.parent as View
@@ -212,7 +257,11 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
                 val rlp = locationButton.layoutParams as RelativeLayout.LayoutParams
                 rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0)
                 rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
-                rlp.setMargins(0, 180, 180, 0);
+                rlp.setMargins(0, 180, 180, 0)
+
+                locationButton.setOnClickListener(){
+                    loadAllVendors(mLocation!!)
+                }
             }
             else {
                 Log.e("No Permission", "Permission Denied")
@@ -306,7 +355,7 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
         {
             io.reactivex.rxjava3.core.Observable.fromIterable(Constants.vendorsFound)
                 .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(io.reactivex.rxjava3.android.schedulers.AndroidSchedulers.mainThread())
                 .subscribe(
                     {
                         vendorGeoModel: VendorGeoModel? ->
@@ -347,16 +396,13 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
     override fun onVendorInfoLoadSuccess(vendorGeoModel: VendorGeoModel?) {
         if(!Constants.markerList.containsKey(vendorGeoModel!!.key))
         {
-            Constants.markerList.put(
-                vendorGeoModel.key!!,
-                mMap.addMarker(MarkerOptions()
-                    .position(LatLng(vendorGeoModel.geoLocation!!.latitude, vendorGeoModel.geoLocation!!.longitude))
-                    .flat(true)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.vendorsicon))
-                    .title(vendorGeoModel.vendorInfoModel!!.firstName + ":" + vendorGeoModel.vendorInfoModel!!.sellingItem)
-                    .snippet(vendorGeoModel.vendorInfoModel!!.phoneNumber)
-                )!!
-            )
+            Constants.markerList[vendorGeoModel.key!!] = mMap.addMarker(MarkerOptions()
+                .position(LatLng(vendorGeoModel.geoLocation!!.latitude, vendorGeoModel.geoLocation!!.longitude))
+                .flat(true)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.vendorsicon))
+                .title(vendorGeoModel.vendorInfoModel!!.firstName + ":" + vendorGeoModel.vendorInfoModel!!.sellingItem)
+                .snippet(vendorGeoModel.vendorInfoModel!!.phoneNumber)
+            )!!
         }
 
         if(!TextUtils.isEmpty(cityName))
@@ -375,7 +421,40 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
                             val marker = Constants.markerList[vendorGeoModel.key!!]
                             marker!!.remove()
                             Constants.markerList.remove(vendorGeoModel.key!!)
+                            Constants.vendorsSubscribe.remove(vendorGeoModel.key)
                             vendorLocation.removeEventListener(this)
+                        }
+                    }
+                    else
+                    {
+                        if(Constants.markerList[vendorGeoModel.key!!] !=null)
+                        {
+                            val geoQueryModel = snapshot.getValue(GeoQueryModel::class.java)
+                            val animationModel = AnimationModel(false,geoQueryModel!!)
+
+                            if(Constants.vendorsSubscribe[vendorGeoModel.key!!] != null)
+                            {
+                                val marker = Constants.markerList[vendorGeoModel.key!!]
+                                val oldPosition = Constants.vendorsSubscribe[vendorGeoModel.key!!]
+
+                                val from = StringBuilder()
+                                    .append(oldPosition!!.geoQueryModel!!.l?.get(0))
+                                    .append(",")
+                                    .append(oldPosition.geoQueryModel.l?.get(1))
+                                    .toString()
+
+                                val to = StringBuilder()
+                                    .append(animationModel.geoQueryModel!!.l?.get(0))
+                                    .append(",")
+                                    .append(animationModel.geoQueryModel.l?.get(1))
+                                    .toString()
+
+                                moveMarkerAnimation(vendorGeoModel.key!!, animationModel,marker,from,to)
+                            }
+                            else
+                            {
+                                Constants.vendorsSubscribe[vendorGeoModel.key!!] = animationModel
+                            }
                         }
                     }
                 }
@@ -384,6 +463,84 @@ class VendorsFragment : BaseFragment(), FirebaseVendorInfoListener, FirebaseFail
                     showErrorSnackBar(error.message,true)
                 }
             })
+        }
+    }
+
+    private fun moveMarkerAnimation(key: String, newData: AnimationModel,marker: Marker?, from: String, to: String)
+    {
+        if(!newData.isRun)
+        {
+            compositeDisposable.add(iGoogleAPI.getDirections("driving",
+                "less_driving",
+                from, to,
+                getString(R.string.google_maps_api_key))!!
+                .subscribeOn(io.reactivex.schedulers.Schedulers.io())
+                .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
+                .subscribe { returnResult ->
+                    Log.d("API_RETURN", returnResult!!)
+
+                    try{
+                        val jsonObject = JSONObject(returnResult)
+                        val jsonArray = jsonObject.getJSONArray("routes")
+
+                        for(i in 0 until jsonArray.length())
+                        {
+                            val route = jsonArray.getJSONObject(i)
+                            val poly = route.getJSONObject("overview_polyline")
+                            val polyline = poly.getString("points")
+                            //polylineList = Constants.decodePoly(polyline)
+                            newData.polylineList = Constants.decodePoly(polyline)
+                        }
+
+                        //index = -1
+                        //next = 1
+                        newData.index = -1
+                        newData.next = 1
+
+                        val runnable = object: Runnable{
+                            override fun run(){
+                                if(newData.polylineList.size > 1)
+                                {
+                                    if(newData.index < newData.polylineList.size - 2)
+                                    {
+                                        newData.index++
+                                        newData.next = newData.index+1
+
+                                        newData.start = newData.polylineList[newData.index]!!
+                                        newData.end = newData.polylineList[newData.next]!!
+                                    }
+                                    val valueAnimator = ValueAnimator.ofInt(0,1)
+                                    valueAnimator.duration = 3000
+                                    valueAnimator.interpolator = LinearInterpolator()
+                                    valueAnimator.addUpdateListener { value ->
+                                        newData.v = value.animatedFraction
+                                        newData.lat = newData.v * newData.end!!.latitude + (1-newData.v) * newData.start!!.latitude
+                                        newData.lng = newData.v * newData.end!!.longitude + (1-newData.v) * newData.start!!.longitude
+
+                                        val newPos = LatLng(newData.lat, newData.lng)
+                                        marker!!.position = newPos
+                                        marker.setAnchor(0.5f,0.5f)
+                                        marker.rotation = Constants.getBearing(newData.start!!,newPos)
+                                    }
+                                    valueAnimator.start()
+                                    if(newData.index < newData.polylineList!!.size - 2)
+                                        newData.handler!!.postDelayed(this,1500)
+                                    else if(newData.index < newData.polylineList!!.size - 1)
+                                    {
+                                        newData.isRun = false
+                                        Constants.vendorsSubscribe[key] = newData
+                                    }
+                                }
+                            }
+                        }
+                        newData.handler!!.postDelayed(runnable,1500)
+
+                    } catch (e: Exception)
+                    {
+                        showErrorSnackBar(e.message!!,true)
+                    }
+                }
+            )
         }
     }
 

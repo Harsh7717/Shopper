@@ -18,10 +18,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/Theme.Shopper">
         <activity
             android:name="com.ksolutions.whatNeed.activities.VendorRegisterActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Shopper.NoActionBar"  />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -40,7 +41,7 @@
 
         <activity
             android:name="com.ksolutions.whatNeed.activities.VendorsMainActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name="com.ksolutions.whatNeed.activities.MapsActivity"
@@ -56,9 +57,8 @@
 
         <activity
             android:name="com.ksolutions.whatNeed.activities.SearchableActivity"
-            android:label="@string/app_name"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Shopper.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -73,31 +73,31 @@
         </activity>
         <activity
             android:name="com.ksolutions.whatNeed.activities.AddProductActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name="com.ksolutions.whatNeed.activities.BusinessInfo"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name="com.ksolutions.whatNeed.activities.ProductActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name="com.ksolutions.whatNeed.activities.AddBusiness"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name="com.ksolutions.whatNeed.activities.BusinessCategoryActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name="com.ksolutions.whatNeed.activities.BusinessIntro"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name="com.ksolutions.whatNeed.activities.MyProfileActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Shopper.NoActionBar" />
         <activity
             android:name="com.ksolutions.whatNeed.activities.MainActivity"

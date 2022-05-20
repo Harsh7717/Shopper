@@ -9,13 +9,18 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.webkit.MimeTypeMap
 import androidx.core.content.ContextCompat
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
+import com.ksolutions.whatNeed.models.AnimationModel
 import com.ksolutions.whatNeed.models.VendorGeoModel
+import kotlin.math.abs
+import kotlin.math.atan
 
 
 object Constants {
+    val vendorsSubscribe: MutableMap<String, AnimationModel> = HashMap<String, AnimationModel>()
     val markerList: MutableMap<String, Marker> = HashMap<String, Marker>()
-    val VENDOR_INFO_REF: String = "VendorsInfo"
+    const val VENDOR_INFO_REF: String = "VendorsInfo"
 
     const val VENDOR_LOCATION_REF = "VendorLocation"
     val vendorsFound: MutableSet<VendorGeoModel> = HashSet<VendorGeoModel>()
@@ -103,5 +108,66 @@ object Constants {
         drawable.setBounds(0, 0, canvas.width, canvas.height)
         drawable.draw(canvas)
         return bitmap
+    }
+
+    //GET BEARING
+    fun getBearing(begin: LatLng, end: LatLng): Float
+    {
+        val lat: Double = abs(begin.latitude - end.latitude)
+        val lng: Double = abs(begin.longitude - end.longitude)
+
+        if (begin.latitude < end.latitude && begin.longitude < end.longitude)
+            return Math.toDegrees(atan(lng / lat)).toFloat()
+
+        else if (begin.latitude >= end.latitude && begin.longitude < end.longitude)
+            return (90 - Math.toDegrees(atan(lng / lat)) + 90).toFloat()
+
+        else if (begin.latitude >= end.latitude && begin.longitude >= end.longitude)
+            return (Math.toDegrees(atan(lng / lat)) + 180).toFloat()
+
+        else if (begin.latitude < end.latitude && begin.longitude >= end.longitude)
+            return (90 - Math.toDegrees(atan(lng / lat)) + 270).toFloat()
+
+        return (-1).toFloat()
+    }
+
+    //DECODE POLY
+    fun decodePoly(encoded: String): ArrayList<LatLng?>
+    {
+        val poly = ArrayList<LatLng?>()
+        var index = 0
+        val len = encoded.length
+        var lat = 0
+        var lng = 0
+
+        while (index < len)
+        {
+            var b: Int
+            var shift = 0
+            var result = 0
+            do {
+                b = encoded[index++].code - 63
+                result = result or (b and 0x1f shl shift)
+                shift += 5
+            } while (b >= 0x20)
+
+            val dlat = if (result and 1 != 0) (result shr 1).inv() else result shr 1
+            lat += dlat
+            shift = 0
+            result = 0
+
+            do {
+                b = encoded[index++].code - 63
+                result = result or (b and 0x1f shl shift)
+                shift += 5
+            } while (b >= 0x20)
+
+            val dlng = if (result and 1 != 0) (result shr 1).inv() else result shr 1
+            lng += dlng
+            val p = LatLng(lat.toDouble() / 1E5, lng.toDouble() / 1E5)
+
+            poly.add(p)
+        }
+        return poly
     }
 }
